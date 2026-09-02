@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://handikarhama.com/sitemap.xml

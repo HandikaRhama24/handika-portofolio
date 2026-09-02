@@ -1,0 +1,106 @@
+
+
+:root {
+
+  
+  --ink:          #0B0B0D;  
+  --ink-soft:     #17171A;  
+  --ink-softer:   #202024;  
+  --paper:        #F7F5F0;  
+  --paper-dim:    #EDE9E0;  
+  --graphite:     #55524C;  
+  --graphite-deep:#302E2A; 
+  --mist:         #A19C91;  
+  --mist-soft:    #6E6A62;  
+  --gold:         #C6A15C;  
+  --gold-light:   #E8D9B5;  
+  --bronze:       #7C5E37;  
+
+
+  --cat-kerja:        var(--gold);   
+  --cat-organisasi:   #7E97AC;       
+  --cat-akademik:     #8C9A79;       
+  --cat-sertifikasi:  #B3835E;      
+
+ 
+  --bg-dark:      var(--ink);
+  --bg-light:     var(--paper);
+  --text-on-dark:        #FBFAF7;
+  --text-on-dark-muted:  var(--mist);
+  --text-on-light:       var(--ink);
+  --text-on-light-muted: var(--graphite);
+
+
+  --font-display: 'Bodoni Moda', 'Iowan Old Style', 'Georgia', serif;
+  --font-label:   'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --font-body:    'Manrope', 'Segoe UI', sans-serif;
+
+  --fs-hero:   clamp(2rem, 5.2vw, 4.5rem);
+  --fs-h2:     clamp(2.1rem, 5.6vw, 4.25rem);
+  --fs-h3:     clamp(1.4rem, 3vw, 2.1rem);
+  --fs-lead:   clamp(1.05rem, 1.5vw, 1.375rem);
+  --fs-stat:   clamp(2.5rem, 5.6vw, 4.75rem);
+  --fs-body:   1rem;
+  --fs-small:  0.875rem;
+  --fs-label:  0.75rem;
+
+  --lh-tight:  1.05;
+  --lh-snug:   1.25;
+  --lh-body:   1.7;
+
+  --ls-label:  0.14em;
+  --ls-wide:   0.06em;
+
+  /* ---------- SPACING ---------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  --section-py:     clamp(5rem, 12vh, 8rem);
+  --container-px:   clamp(1.5rem, 6vw, 6rem);
+  --container-max:  1440px;
+
+  /* ---------- MOTION ---------- */
+  --ease-premium:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --dur-fast:   0.3s;
+  --dur-base:   0.6s;
+  --dur-slow:   1s;
+  --dur-slower: 1.3s;
+
+  /* ---------- SHADOW & EFEK ---------- */
+  --shadow-soft:      0 20px 60px -20px rgba(0,0,0,0.45);
+  --shadow-card:       0 10px 30px -12px rgba(0,0,0,0.35);
+  --shadow-gold-glow: 0 0 40px rgba(198,161,92,0.28);
+  --blur-glass: 16px;
+
+  /* ---------- RADIUS ---------- */
+  --radius-sm:   4px;
+  --radius-md:   12px;
+  --radius-full: 999px;
+
+  /* ---------- Z-INDEX ---------- */
+  --z-cursor:   999;
+  --z-preloader:900;
+  --z-lightbox: 950; /* di atas preloader/header, di bawah cursor kustom */
+  --z-header:   700;  /* di atas mobile-menu agar tombol toggle/close tetap bisa diklik saat menu terbuka */
+  --z-mobile-menu: 600;
+}
+
+/* Hormati preferensi reduced-motion di level token juga */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-slow: 0.01ms;
+    --dur-slower: 0.01ms;
+  }
+}

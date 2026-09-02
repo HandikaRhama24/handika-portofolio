@@ -1,0 +1,122 @@
+
+
+/* ---------- Keyframes ---------- */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .45; }
+}
+
+[data-float] { animation: float-y 7s var(--ease-in-out) infinite; }
+.shape--2[data-float] { animation-duration: 9s; animation-delay: -3s; }
+.hero__status-dot { animation: pulse-soft 2.4s ease-in-out infinite; }
+
+/* ---------- Scroll-cue dot ---------- */
+.scroll-cue__line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 8px;
+  background: var(--gold);
+  animation: scroll-dot 2.2s var(--ease-in-out) infinite;
+}
+@keyframes scroll-dot {
+  0%   { transform: translateY(-8px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateY(34px); opacity: 0; }
+}
+
+/* ---------- Generic scroll reveal ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 1s var(--ease-premium), transform 1s var(--ease-premium);
+}
+body.is-loaded [data-reveal].is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger anak-anak langsung di dalam grup (stat, field, detail-list) */
+.stat-grid[data-reveal] .stat,
+.field-list[data-reveal] .field,
+.detail-list[data-reveal] li,
+.tools-list[data-reveal] .tools-list__item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-premium), transform 0.7s var(--ease-premium);
+  transition-delay: calc(var(--i, 0) * 0.09s);
+}
+body.is-loaded [data-reveal].is-inview .stat,
+body.is-loaded [data-reveal].is-inview .field,
+body.is-loaded [data-reveal].is-inview li {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Delay lebih rapat untuk tools-list (15 item, agar reveal tetap terasa cepat) */
+.tools-list[data-reveal] .tools-list__item { transition-delay: calc(var(--i, 0) * 0.045s); }
+.field-list .field:nth-child(1) { --i: 0; }
+.field-list .field:nth-child(2) { --i: 1; }
+.field-list .field:nth-child(3) { --i: 2; }
+.detail-list li:nth-child(1) { --i: 0; }
+.detail-list li:nth-child(2) { --i: 1; }
+.detail-list li:nth-child(3) { --i: 2; }
+
+/* ---------- Text reveal: hero (per-baris, per-karakter, ter-mask) ---------- */
+.line-mask { display: block; overflow: hidden; }
+.line { display: block; }
+.word-group {
+  display: inline-block;
+  white-space: nowrap;
+}
+.char {
+  display: inline-block;
+  transform: translateY(115%) rotate(4deg);
+  opacity: 0;
+  transition: transform 0.85s var(--ease-premium), opacity 0.6s ease;
+  transition-delay: calc(var(--i, 0) * 0.018s);
+}
+body.is-loaded .hero.is-inview .char {
+  transform: translateY(0) rotate(0);
+  opacity: 1;
+}
+
+/* ---------- Image reveal (curtain wipe pada photo-frame) ---------- */
+.reveal-panel { transition: transform 1.1s var(--ease-premium); }
+body.is-loaded [data-reveal].is-inview .reveal-panel,
+body.is-loaded .photo-frame.is-inview .reveal-panel {
+  transform: scaleX(0);
+}
+
+/* ---------- Bento galeri: sel pendukung muncul bergantian, jeda mengikuti urutan ---------- */
+.bento__cell:not(.bento__cell--hero) { opacity: 0; transition: opacity .6s var(--ease-premium); transition-delay: calc(var(--i, 0) * 0.08s); }
+body.is-loaded [data-reveal].is-inview .bento__cell { opacity: 1; }
+
+/* ---------- Magnetic buttons ---------- */
+[data-magnetic] { transition: transform 0.35s var(--ease-out-soft); }
+
+
+@media (prefers-reduced-motion: reduce) {
+  [data-float] { animation: none; }
+  .marquee__track { animation-duration: 60s; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .char { opacity: 1; transform: none; transition: none; }
+  .reveal-panel { transform: scaleX(0); transition: none; }
+  .preloader { display: none; }
+  .bento__cell { opacity: 1; }
+  .photo-frame[data-tilt] { transform: none; }
+}

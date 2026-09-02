@@ -1,0 +1,433 @@
+
+
+/* ---------- Section dasar ---------- */
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--section-py) var(--container-px);
+  overflow: hidden;
+}
+.section--dark  { background: var(--bg-dark); }
+.section--light { background: var(--bg-light); }
+
+/* ---------- Bentuk dekoratif mengambang ---------- */
+.shape { position: absolute; pointer-events: none; z-index: 0; }
+.shape--ring {
+  border: 1px solid var(--mist-soft);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.shape--1 { width: 340px; height: 340px; top: 8%; right: -80px; }
+.shape--2 { width: 180px; height: 180px; bottom: 12%; left: -40px; border-color: var(--gold); opacity: .35; }
+.shape--plus {
+  font-family: var(--font-label);
+  font-size: 1.5rem;
+  color: var(--mist-soft);
+  top: 22%;
+  left: 6%;
+  opacity: .5;
+}
+.hero__network {
+  position: absolute;
+  top: 8%;
+  left: -2%;
+  width: min(46vw, 320px);
+  height: auto;
+  color: var(--mist-soft);
+  opacity: .4;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero__network circle:last-of-type { color: var(--gold); }
+
+/* ========================================================================
+   00 — HERO
+   ======================================================================== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--section-py) + 3rem);
+}
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__glow {
+  position: absolute;
+  top: -10%; left: 50%;
+  width: 90vw; max-width: 1200px; height: 70vh;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(198,161,92,0.12) 0%, rgba(198,161,92,0) 70%);
+}
+.hero__grain {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: .5;
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero__content { max-width: 40rem; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-xl); }
+.hero__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-lg); font-family: var(--font-label); font-size: var(--fs-small); color: var(--mist); }
+.hero__status { display: inline-flex; align-items: center; gap: 0.5em; }
+.hero__status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(198,161,92,0.25); flex-shrink: 0; }
+
+.hero__visual { display: flex; flex-direction: column; align-items: center; }
+.photo-frame--hero { width: min(78vw, 380px); aspect-ratio: 4 / 5; }
+
+.scroll-cue {
+  position: absolute;
+  left: var(--container-px);
+  bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  z-index: 2;
+}
+.scroll-cue__line { width: 1px; height: 34px; background: var(--mist-soft); position: relative; overflow: hidden; }
+.scroll-cue__text { font-family: var(--font-label); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--mist); }
+
+@media (min-width: 900px) {
+  .hero__grid { grid-template-columns: 1.15fr 0.85fr; text-align: left; }
+  .hero__visual { align-items: flex-end; }
+  .photo-frame--hero { width: min(30vw, 420px); }
+}
+
+/* ========================================================================
+   01 — TENTANG SAYA
+   ======================================================================== */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  align-items: center;
+}
+.about__visual { position: relative; display: flex; justify-content: center; }
+.photo-frame--about { width: min(80vw, 360px); aspect-ratio: 4 / 5; }
+.about__frame-offset {
+  position: absolute;
+  inset: 18px -18px -18px 18px;
+  border: 1px solid var(--bronze);
+  z-index: -1;
+  display: none;
+}
+.about__content { max-width: 34rem; }
+
+@media (min-width: 900px) {
+  .about__grid { grid-template-columns: 0.85fr 1.15fr; }
+  .about__visual { justify-content: flex-start; order: 1; }
+  .about__content { order: 2; }
+  .about__frame-offset { display: block; }
+}
+
+/* ========================================================================
+   02 — RINGKASAN PROFESIONAL
+   ======================================================================== */
+.summary { display: flex; align-items: center; }
+.summary__bg { position: absolute; inset: 0; z-index: 0; opacity: .16; filter: grayscale(1) contrast(1.1); }
+.summary__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.summary::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, var(--ink) 0%, rgba(11,11,13,0.75) 45%, var(--ink) 100%);
+  z-index: 0;
+}
+.summary__inner { position: relative; z-index: 1; max-width: var(--container-max); margin: 0 auto; width: 100%; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg) var(--space-xl);
+  margin: var(--space-xl) 0;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--mist-soft);
+}
+.stat { display: flex; flex-direction: column; gap: 0.4rem; }
+.stat__number { font-family: var(--font-display); font-size: var(--fs-stat); font-weight: 500; line-height: 1; color: var(--gold); }
+.stat__label { font-family: var(--font-label); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--mist); }
+
+@media (min-width: 700px) {
+  .stat-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ========================================================================
+   03 — PENGALAMAN KERJA   /   04 — ORGANISASI  (pola sama, dicerminkan)
+   ======================================================================== */
+.experience__grid, .organization__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  align-items: center;
+}
+.photo-frame--experience { width: 100%; max-width: 340px; aspect-ratio: 3 / 4; margin: 0 auto; }
+.photo-frame--organization { width: 100%; max-width: 340px; aspect-ratio: 1 / 1; margin: 0 auto; border-radius: 63% 37% 54% 46% / 43% 37% 63% 57%; }
+.experience__content, .organization__content { max-width: 34rem; }
+
+@media (min-width: 900px) {
+  .experience__grid { grid-template-columns: 0.8fr 1.2fr; }
+  .photo-frame--experience { max-width: none; height: 62vh; min-height: 420px; }
+  .organization__grid { grid-template-columns: 1.2fr 0.8fr; }
+  .photo-frame--organization { max-width: 420px; margin-left: auto; }
+}
+
+/* ========================================================================
+   05 — PENDIDIKAN
+   ======================================================================== */
+.education__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  align-items: center;
+}
+.photo-frame--education {
+  width: min(80vw, 340px);
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+  clip-path: polygon(0 0, 100% 0, 100% 84%, 84% 100%, 0 100%);
+}
+.education__content { max-width: 32rem; }
+
+@media (min-width: 900px) {
+  .education__grid { grid-template-columns: 0.9fr 1.1fr; }
+  .photo-frame--education { width: 100%; max-width: 380px; }
+}
+
+/* ========================================================================
+   06 — KEAHLIAN
+   ======================================================================== */
+.skills__top { max-width: var(--container-max); margin: 0 auto var(--space-2xl); position: relative; }
+.photo-frame--skills {
+  position: absolute;
+  top: 0; right: 0;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: block;
+}
+@media (min-width: 700px) {
+  .photo-frame--skills { width: 108px; height: 108px; }
+  .skills__top { padding-right: 150px; }
+}
+.skill-list { max-width: var(--container-max); margin: 0 auto; border-top: 1px solid var(--mist-soft); }
+.skill-item { border-bottom: 1px solid var(--mist-soft); }
+.skill-item__trigger {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 1.5rem;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+}
+.skill-item__desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--dur-base) var(--ease-premium);
+}
+.skill-item__desc p { padding-bottom: var(--space-lg); max-width: 34rem; color: var(--text-on-dark-muted); }
+.skill-item.is-open .skill-item__desc { max-height: 200px; }
+
+@media (min-width: 700px) {
+  .photo-frame--skills { display: block; }
+  .skills__top { padding-right: 150px; }
+}
+
+/* ========================================================================
+   07 — TOOLS & TECHNOLOGY
+   ======================================================================== */
+.tools__head { max-width: var(--container-max); margin: 0 auto; position: relative; margin-bottom: var(--space-xl); }
+
+/* ---------- Tools index list (pengganti grid kartu ikon) ---------- */
+.tools-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  border-top: 1px solid var(--paper-dim);
+}
+.tools-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-2xs);
+  border-bottom: 1px solid var(--paper-dim);
+  transition: padding-left var(--dur-base) var(--ease-premium), background var(--dur-base) var(--ease-premium);
+}
+.tools-list__item:hover { padding-left: var(--space-sm); background: rgba(198,161,92,0.05); }
+
+.tools-list__num {
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-wide);
+  color: var(--graphite);
+  opacity: .4;
+  width: 1.6rem;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.tools-list__icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+.tools-list__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter var(--dur-base) var(--ease-premium), transform var(--dur-base) var(--ease-premium);
+}
+.tools-list__item:hover .tools-list__icon img {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.1);
+}
+
+.tools-list__name {
+  font-family: var(--font-label);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: var(--ls-wide);
+  color: var(--text-on-light-muted);
+  transition: color var(--dur-base) var(--ease-premium);
+}
+.tools-list__item:hover .tools-list__name { color: var(--text-on-light); }
+
+@media (min-width: 700px) {
+  .tools-list { grid-template-columns: repeat(2, 1fr); }
+  .tools-list__item:nth-child(2n) { border-left: 1px solid var(--paper-dim); padding-left: var(--space-md); }
+  .tools-list__item:nth-child(2n):hover { padding-left: calc(var(--space-md) + var(--space-2xs)); }
+}
+@media (min-width: 1100px) {
+  .tools-list { grid-template-columns: repeat(3, 1fr); }
+  .tools-list__item:nth-child(3n+2),
+  .tools-list__item:nth-child(3n+3) { border-left: 1px solid var(--paper-dim); padding-left: var(--space-md); }
+  .tools-list__item:nth-child(3n+2):hover,
+  .tools-list__item:nth-child(3n+3):hover { padding-left: calc(var(--space-md) + var(--space-2xs)); }
+}
+
+/* ---------- Stack ticker (ringkasan software & metodologi) ---------- */
+.tools__stack { margin-top: var(--space-2xl); max-width: var(--container-max); margin-left: auto; margin-right: auto; }
+.tools__stack-label {
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: var(--space-md);
+}
+.marquee { border-top: 1px solid var(--graphite); border-bottom: 1px solid var(--graphite); padding: var(--space-md) 0; }
+/* ========================================================================
+   08 — KARYA & PROYEK
+   ======================================================================== */
+.portfolio__head { max-width: var(--container-max); margin: 0 auto var(--space-2xl); }
+.portfolio__list { display: flex; flex-direction: column; gap: var(--space-xl); max-width: var(--container-max); margin: 0 auto; }
+
+/* Kartu per-proyek — bingkai konsisten (padding, border, latar, bayangan)
+   supaya tiap proyek terbaca sebagai satu unit yang jelas & seragam,
+   terlepas dari isi/panjang kontennya masing-masing. Hanya bingkai visual
+   yang ditambahkan di sini — markup animasi (data-reveal/data-tilt/dsb.)
+   dan seluruh teks/konten proyek yang sudah ada tidak diubah. */
+.portfolio-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  padding: clamp(1.25rem, 4vw, var(--space-lg));
+  border: 1.5px solid rgba(198, 161, 92, 0.22);
+  border-radius: var(--radius-md);
+  background: linear-gradient(175deg, var(--ink-soft), var(--ink) 65%);
+  box-shadow: var(--shadow-card);
+}
+.photo-frame--portfolio { width: 100%; aspect-ratio: 4 / 3; }
+.portfolio-item__content { display: flex; flex-direction: column; justify-content: center; }
+
+/* Baris eyebrow: nomor urut proyek + tag kategori, disamakan di kelima kartu */
+.portfolio-item__eyebrow-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+.portfolio-item__index {
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-wide);
+  color: var(--mist-soft);
+  border: 1px solid var(--mist-soft);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.6rem;
+  flex-shrink: 0;
+  opacity: .85;
+}
+.portfolio-item__tag { font-family: var(--font-label); font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--gold); margin-bottom: 0; display: inline-flex; align-items: center; }
+.portfolio-item__tag::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: 8px; flex-shrink: 0; }
+
+/* Aksen warna per kategori — bantu memindai jenis pengalaman tanpa harus membaca teks tag */
+.portfolio-item[data-category="organisasi"] .portfolio-item__tag { color: var(--cat-organisasi); }
+.portfolio-item[data-category="akademik"] .portfolio-item__tag { color: var(--cat-akademik); }
+.portfolio-item[data-category="sertifikasi"] .portfolio-item__tag { color: var(--cat-sertifikasi); }
+
+.portfolio-item__title { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.1rem); font-weight: 500; color: var(--text-on-dark); margin-bottom: var(--space-sm); }
+.portfolio-item__content p { color: var(--text-on-dark-muted); max-width: 36rem; line-height: var(--lh-body); }
+.portfolio-item__meta { margin: 0 0 var(--space-sm); gap: 0.5rem; max-width: 36rem; }
+.portfolio-item__meta .field__label { min-width: 5rem; }
+.portfolio-item__meta .field__value { font-size: 0.92rem; }
+
+@media (min-width: 900px) {
+  .portfolio-item { grid-template-columns: 1.2fr 1fr; align-items: center; gap: var(--space-xl); }
+  .portfolio-item--reverse .portfolio-item__visual { order: 2; }
+  .portfolio-item--reverse .portfolio-item__content { order: 1; }
+}
+
+/* Pembatas antar proyek — garis tipis + tanda silang emas kecil di tengah,
+   memakai motif "Calibration Mark" yang sama seperti di jangkar foto lain
+   di situs ini. Statis (tanpa data-reveal) supaya tidak menyentuh sistem
+   animasi scroll yang sudah ada sama sekali. */
+.portfolio-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  color: var(--mist-soft);
+}
+.portfolio-divider__line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--mist-soft) 50%, transparent); opacity: .55; }
+.portfolio-divider__mark { flex-shrink: 0; width: 16px; height: 16px; position: relative; opacity: .7; }
+.portfolio-divider__mark::before, .portfolio-divider__mark::after { content: ''; position: absolute; background: var(--gold); }
+.portfolio-divider__mark::before { top: 50%; left: 0; width: 100%; height: 1px; transform: translateY(-50%); }
+.portfolio-divider__mark::after { left: 50%; top: 0; height: 100%; width: 1px; transform: translateX(-50%); }
+
+/* ========================================================================
+   09 — KONTAK
+   ======================================================================== */
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  max-width: var(--container-max);
+  margin: 0 auto;
+  align-items: center;
+}
+.photo-frame--contact { width: min(80vw, 360px); aspect-ratio: 4 / 5; margin: 0 auto; }
+.contact__content { max-width: 32rem; }
+.contact-form { display: flex; flex-direction: column; gap: var(--space-lg); margin-top: var(--space-xl); max-width: 26rem; }
+
+@media (min-width: 900px) {
+  .contact__grid { grid-template-columns: 0.85fr 1.15fr; }
+  .photo-frame--contact { width: 100%; max-width: 400px; }
+}
+
+.summary__bg { will-change: transform; }

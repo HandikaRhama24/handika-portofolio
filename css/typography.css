@@ -1,0 +1,195 @@
+
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+}
+
+/* ---------- Eyebrow / label kecil ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.eyebrow--dark { color: var(--bronze); }
+
+.eyebrow__mark {
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ---------- Heading besar (Bodoni Moda) ---------- */
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  color: var(--text-on-dark);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+.hero__title .line:nth-of-type(1) { font-style: normal; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+.section--dark .section-title { color: var(--text-on-dark); }
+.section--light .section-title { color: var(--text-on-light); }
+
+.role-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.role-title--sm { font-size: clamp(1.15rem, 2.2vw, 1.6rem); font-style: normal; font-family: var(--font-label); font-weight: 600; text-transform: uppercase; letter-spacing: var(--ls-wide); }
+.section--dark .role-title { color: var(--text-on-dark); }
+.section--light .role-title { color: var(--text-on-light); }
+
+.education__years {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  color: var(--bronze);
+  margin-top: var(--space-md);
+}
+
+/* ---------- Body copy ---------- */
+.hero__tagline {
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  font-weight: 300;
+  line-height: var(--lh-snug);
+  color: var(--text-on-dark-muted);
+  max-width: 32rem;
+  margin-bottom: var(--space-lg);
+}
+
+.about__text p,
+.summary__text,
+.contact__text,
+.education__focus,
+.tools__intro,
+.portfolio__intro {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+}
+
+.about__text p { font-size: 1.05rem; margin-bottom: var(--space-md); max-width: 34rem; }
+.about__text p:last-child { margin-bottom: 0; }
+.section--light .about__text p { color: var(--text-on-light-muted); }
+
+.summary__text { font-size: 1.15rem; max-width: 46rem; color: var(--text-on-dark-muted); }
+.contact__text { font-size: 1.1rem; max-width: 30rem; color: var(--text-on-dark-muted); margin-bottom: var(--space-lg); }
+.education__focus { font-size: 1.05rem; max-width: 28rem; color: var(--text-on-light-muted); margin: var(--space-md) 0; }
+.tools__intro { font-size: 1.05rem; max-width: 26rem; color: var(--text-on-light-muted); }
+.portfolio__intro { font-size: 1.05rem; max-width: 40rem; color: var(--text-on-dark-muted); }
+
+/* ---------- Detail list (bullet bergaya editorial) ---------- */
+.detail-list li {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: var(--lh-body);
+  padding-left: 1.4em;
+  margin-bottom: 0.85em;
+  max-width: 32rem;
+}
+.detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 1px;
+  background: var(--gold);
+}
+.section--light .detail-list li { color: var(--text-on-light-muted); }
+.section--dark .detail-list li { color: var(--text-on-dark-muted); }
+
+/* ---------- Field list (Label — Value, motif dossier) ---------- */
+.field-list { display: flex; flex-direction: column; gap: 0.65rem; margin: var(--space-md) 0; }
+.field { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem; font-family: var(--font-label); }
+.field__label {
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  min-width: 9rem;
+  flex-shrink: 0;
+}
+.section--light .field__label { color: var(--bronze); }
+.field__value {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.section--dark .field__value { color: var(--text-on-dark); }
+.section--light .field__value { color: var(--text-on-light); }
+.field__value--link { text-decoration: none; border-bottom: 1px solid var(--mist-soft); transition: border-color var(--dur-fast) var(--ease-premium), color var(--dur-fast) var(--ease-premium); }
+.field__value--link:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ---------- Section index (angka kecil pojok, motif referensi dossier) ---------- */
+.section-index {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--container-px);
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-wide);
+  color: var(--mist-soft);
+  z-index: 2;
+}
+.section--light .section-index { color: var(--graphite); opacity: .45; }
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-label);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--bronze);
+  border: 1px solid var(--bronze);
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-full);
+}
+.badge__mark { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+/* ---------- Caption kecil ---------- */
+.hero__caption {
+  font-family: var(--font-label);
+  font-size: var(--fs-small);
+  letter-spacing: var(--ls-wide);
+  color: var(--mist);
+  margin-top: var(--space-md);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .field { flex-direction: column; gap: 0.15rem; }
+  .field__label { min-width: 0; }
+}
